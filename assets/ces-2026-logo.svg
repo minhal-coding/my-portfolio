@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-labelledby="title desc">
+  <title id="title">CES 2026 Las Vegas</title>
+  <desc id="desc">CES 2026 Las Vegas logo badge</desc>
+  <defs>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#02d6d0"/>
+      <stop offset="0.52" stop-color="#2f8bff"/>
+      <stop offset="1" stop-color="#d7ff55"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#effbfb"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="300" rx="28" fill="url(#bg)"/>
+  <g transform="translate(55 66)">
+    <path d="M18 82 110 28l92 54-92 54Z" fill="url(#mark)" opacity="0.95"/>
+    <path d="M110 28v108l92-54Z" fill="#ffffff" opacity="0.72"/>
+    <path d="M18 82 110 28v108Z" fill="#0cc8c9" opacity="0.7"/>
+    <rect x="92" y="52" width="72" height="60" rx="9" fill="#ffffff"/>
+  </g>
+  <text x="252" y="164" fill="#172a5f" font-family="Inter, Arial, sans-serif" font-size="88" font-weight="800" letter-spacing="-3">CES</text>
+  <text x="260" y="218" fill="#10202d" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="1">2026 LAS VEGAS</text>
+</svg>
