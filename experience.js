@@ -53,7 +53,7 @@ detailRoot.innerHTML = `
             </div>`
           : ""
       }
-      <a class="primary detail-download" href="./assets/Syed-Minhal-Abbas-Rizvi-Portfolio.pdf" download>Download source PDF</a>
+      <a class="primary detail-download" href="./assets/Syed-Minhal-Abbas-Rizvi-CV.pdf" download>Download CV</a>
     </aside>
 
     <div class="detail-content">
