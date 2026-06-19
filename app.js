@@ -12,7 +12,7 @@ function renderCases(filter = "all") {
   caseGrid.innerHTML = visibleCases
     .map(
       (item) => `
-        <article class="case-card">
+        <article class="case-card glow-card">
           <div class="case-visual">
             ${
               item.image
@@ -27,13 +27,15 @@ function renderCases(filter = "all") {
             ${item.tags.map((tag) => `<span>${tag}</span>`).join("")}
           </div>
           <div class="case-actions">
-            <a class="case-link" href="./experience.html?id=${item.slug}" aria-label="View detailed experience for ${item.title}">View impact</a>
-            ${item.website ? `<a class="case-link secondary-link" href="${item.website}" target="_blank" rel="noopener">Website</a>` : ""}
+            <a class="case-link shiny-button" href="./experience.html?id=${item.slug}" aria-label="View detailed experience for ${item.title}">View impact</a>
+            ${item.website ? `<a class="case-link secondary-link shiny-button" href="${item.website}" target="_blank" rel="noopener">Website</a>` : ""}
           </div>
         </article>
       `
     )
     .join("");
+
+  initGlowCards();
 }
 
 filters.forEach((button) => {
@@ -53,4 +55,50 @@ copyButton.addEventListener("click", async () => {
   }
 });
 
+function initGlowCards() {
+  document
+    .querySelectorAll(
+      ".quick-stats div, .academic-grid article, .community-grid article, .conference-grid article, .capability-grid article, .timeline article, .proof-grid article"
+    )
+    .forEach((card) => card.classList.add("glow-card"));
+
+  document.querySelectorAll(".glow-card").forEach((card) => {
+    if (card.dataset.glowReady) return;
+    card.dataset.glowReady = "true";
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+      card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    });
+  });
+}
+
+function scrambleText(element) {
+  const original = element.textContent.trim();
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const steps = 22;
+  let step = 0;
+
+  const interval = window.setInterval(() => {
+    const progress = step / steps;
+    element.textContent = original
+      .split("")
+      .map((char, index) => {
+        if (char === " ") return " ";
+        return index / original.length < progress
+          ? char
+          : chars[Math.floor(Math.random() * chars.length)];
+      })
+      .join("");
+
+    step += 1;
+    if (step > steps) {
+      window.clearInterval(interval);
+      element.textContent = original;
+    }
+  }, 35);
+}
+
 renderCases();
+initGlowCards();
+document.querySelectorAll("[data-scramble]").forEach(scrambleText);

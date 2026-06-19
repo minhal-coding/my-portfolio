@@ -10,6 +10,7 @@
   --blue: #1769aa;
   --green: #2f8f6b;
   --shadow: 0 18px 50px rgba(16, 32, 45, 0.12);
+  --shine: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.55) 46%, transparent 58%);
 }
 
 * {
@@ -58,16 +59,15 @@ a {
   white-space: nowrap;
 }
 
-.brand span {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  color: white;
-  font-size: 13px;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--teal), var(--blue));
+.brand img {
+  display: block;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  background: white;
+  border: 1px solid var(--line);
   border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(16, 32, 45, 0.08);
 }
 
 .nav {
@@ -102,6 +102,33 @@ a {
   color: white;
   background: var(--ink);
   font-size: 13px;
+}
+
+.shiny-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.shiny-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--shine);
+  transform: translateX(-140%);
+  animation: shine-sweep 4.2s ease-in-out infinite;
+}
+
+@keyframes shine-sweep {
+  0%,
+  55% {
+    transform: translateX(-140%);
+  }
+  75%,
+  100% {
+    transform: translateX(140%);
+  }
 }
 
 .hero {
@@ -202,10 +229,34 @@ h3 {
 .capability-grid article,
 .timeline article,
 .case-card {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(16, 32, 45, 0.06);
+}
+
+.glow-card {
+  --mx: 50%;
+  --my: 50%;
+  isolation: isolate;
+}
+
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    radial-gradient(260px circle at var(--mx) var(--my), rgba(11, 125, 139, 0.55), transparent 52%),
+    linear-gradient(135deg, rgba(11, 125, 139, 0.35), rgba(23, 105, 170, 0.2), rgba(47, 143, 107, 0.25));
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.glow-card:hover::before {
+  opacity: 1;
 }
 
 .quick-stats div {
@@ -474,6 +525,71 @@ h3 {
 .ai-section {
   color: white;
   background: linear-gradient(135deg, #10202d, #0a4e59);
+}
+
+.organizations {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background: linear-gradient(135deg, #071a24, #0b4d57);
+}
+
+.organizations .section-heading {
+  position: relative;
+  z-index: 2;
+}
+
+.organizations .eyebrow,
+.organizations .section-heading p {
+  color: #c4e9ed;
+}
+
+.sparkle-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 18% 28%, rgba(255, 255, 255, 0.85) 0 1px, transparent 2px),
+    radial-gradient(circle at 62% 18%, rgba(147, 228, 233, 0.85) 0 1px, transparent 2px),
+    radial-gradient(circle at 78% 68%, rgba(255, 255, 255, 0.75) 0 1px, transparent 2px),
+    radial-gradient(circle at 35% 76%, rgba(147, 228, 233, 0.8) 0 1px, transparent 2px);
+  background-size: 170px 170px, 220px 220px, 190px 190px, 260px 260px;
+  animation: sparkle-drift 12s linear infinite;
+}
+
+@keyframes sparkle-drift {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 170px -170px, -220px 220px, 190px 190px, -260px -260px;
+  }
+}
+
+.client-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 980px;
+}
+
+.client-grid a,
+.client-grid span {
+  display: grid;
+  min-height: 82px;
+  place-items: center;
+  padding: 16px;
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
 }
 
 .ai-section .eyebrow,
@@ -881,6 +997,7 @@ footer p {
   .academic-grid,
   .community-grid,
   .conference-grid,
+  .client-grid,
   .capability-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -916,6 +1033,7 @@ footer p {
   .academic-grid,
   .community-grid,
   .conference-grid,
+  .client-grid,
   .capability-grid,
   .intro-profile {
     grid-template-columns: 1fr;
