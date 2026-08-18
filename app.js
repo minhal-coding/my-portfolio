@@ -1,11 +1,15 @@
-const networkingMessage = `Hi, I hope you are doing well. My name is Syed Muhammad Minhal Abbas Rizvi. I am a Computer Science student based in Woodbridge, Virginia, with experience across AI systems, SaaS operations, workflow automation, product/project coordination, leadership, and international business operations. I have built and supported work across EasyTodo, YAM, Growmatic, BSL, BabyScientists, NOVA, and international leadership programs. I am currently looking for opportunities where I can help organizations use AI, cloud, automation, and operational systems to work smarter and scale better. Here is my portfolio link: [insert portfolio link]. I would be grateful if you could review it or connect me with any relevant opportunity.`;
+const networkingMessage = `Hi, I hope you are doing well. My name is Syed Muhammad Minhal Abbas Rizvi. I am a Computer Science student and AI systems builder based in Woodbridge, Virginia, with experience in SaaS implementation, workflow automation, product operations, and technical project coordination across industries. I am currently applying that broader background to Growth AI Agent, an evidence-first construction opportunity intelligence project. You can view my work at https://minhal-coding.github.io/my-portfolio/. I would appreciate your feedback or an introduction to a relevant internship or early-career opportunity.`;
 
 const caseGrid = document.querySelector("#caseGrid");
 const filters = document.querySelectorAll(".filter");
 const copyButton = document.querySelector("#copyMessage");
 const copyStatus = document.querySelector("#copyStatus");
+const caseCount = document.querySelector("#caseCount");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function renderCases(filter = "all") {
+  if (!caseGrid) return;
+
   const workExperiences = experiences.filter((item) => item.category === "work");
   const visibleCases = filter === "all" ? workExperiences : workExperiences.filter((item) => item.tags.includes(filter));
 
@@ -16,7 +20,7 @@ function renderCases(filter = "all") {
           <div class="case-visual">
             ${
               item.image
-                ? `<img class="case-image" src="${item.image}" alt="${item.title} website image" loading="lazy" />`
+                ? `<img class="case-image" src="${item.image}" alt="${item.title} brand mark" loading="lazy" />`
                 : `<span>${item.title.split(" ").slice(0, 2).map((word) => word[0]).join("")}</span>`
             }
           </div>
@@ -28,30 +32,56 @@ function renderCases(filter = "all") {
           </div>
           <div class="case-actions">
             <a class="case-link shiny-button" href="./experience.html?id=${item.slug}" aria-label="View detailed experience for ${item.title}">View impact</a>
-            ${item.website ? `<a class="case-link secondary-link shiny-button" href="${item.website}" target="_blank" rel="noopener">Website</a>` : ""}
+            ${item.website ? `<a class="case-link secondary-link shiny-button" href="${item.website}" target="_blank" rel="noopener" aria-label="Open the ${item.title} website in a new tab">${item.title} website</a>` : ""}
           </div>
         </article>
       `
     )
     .join("");
 
+  if (caseCount) {
+    caseCount.textContent = `${visibleCases.length} work ${visibleCases.length === 1 ? "example" : "examples"} shown.`;
+  }
+
   initGlowCards();
 }
 
 filters.forEach((button) => {
   button.addEventListener("click", () => {
-    filters.forEach((item) => item.classList.remove("active"));
+    filters.forEach((item) => {
+      item.classList.remove("active");
+      item.setAttribute("aria-pressed", "false");
+    });
     button.classList.add("active");
+    button.setAttribute("aria-pressed", "true");
     renderCases(button.dataset.filter);
   });
 });
 
-copyButton.addEventListener("click", async () => {
+async function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+  const copied = document.execCommand("copy");
+  textarea.remove();
+  if (!copied) throw new Error("Copy command was unavailable.");
+}
+
+copyButton?.addEventListener("click", async () => {
   try {
-    await navigator.clipboard.writeText(networkingMessage);
+    await copyText(networkingMessage);
     copyStatus.textContent = "Networking message copied.";
   } catch {
-    copyStatus.textContent = "Copy failed. Select and copy this message from the source file.";
+    copyStatus.textContent = "Copy is unavailable in this browser. Email me and I will send the message directly.";
   }
 });
 
@@ -65,6 +95,7 @@ function initGlowCards() {
   document.querySelectorAll(".glow-card").forEach((card) => {
     if (card.dataset.glowReady) return;
     card.dataset.glowReady = "true";
+    if (reducedMotion) return;
     card.addEventListener("pointermove", (event) => {
       const rect = card.getBoundingClientRect();
       card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
@@ -73,32 +104,5 @@ function initGlowCards() {
   });
 }
 
-function scrambleText(element) {
-  const original = element.textContent.trim();
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  const steps = 22;
-  let step = 0;
-
-  const interval = window.setInterval(() => {
-    const progress = step / steps;
-    element.textContent = original
-      .split("")
-      .map((char, index) => {
-        if (char === " ") return " ";
-        return index / original.length < progress
-          ? char
-          : chars[Math.floor(Math.random() * chars.length)];
-      })
-      .join("");
-
-    step += 1;
-    if (step > steps) {
-      window.clearInterval(interval);
-      element.textContent = original;
-    }
-  }, 35);
-}
-
 renderCases();
 initGlowCards();
-document.querySelectorAll("[data-scramble]").forEach(scrambleText);

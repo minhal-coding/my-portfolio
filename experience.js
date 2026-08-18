@@ -1,10 +1,13 @@
 const detailRoot = document.querySelector("#experienceDetail");
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
-const currentIndex = experiences.findIndex((item) => item.slug === id);
-const item = experiences[currentIndex] || experiences[0];
-const previous = experiences[(currentIndex - 1 + experiences.length) % experiences.length] || experiences[experiences.length - 1];
-const next = experiences[(currentIndex + 1) % experiences.length] || experiences[1];
+const requestedIndex = experiences.findIndex((item) => item.slug === id);
+const currentIndex = requestedIndex >= 0 ? requestedIndex : 0;
+const item = experiences[currentIndex];
+const relatedItems = experiences.filter((entry) => entry.category === item.category);
+const relatedIndex = relatedItems.findIndex((entry) => entry.slug === item.slug);
+const previous = relatedItems[(relatedIndex - 1 + relatedItems.length) % relatedItems.length];
+const next = relatedItems[(relatedIndex + 1) % relatedItems.length];
 const externalLinks = [
   item.website ? { label: "Official website", url: item.website } : null,
   ...(item.relatedLinks || [])
@@ -18,9 +21,23 @@ const backTargets = {
 const backTarget = backTargets[item.category] || backTargets.work;
 
 document.title = `${item.title} | Syed Muhammad Minhal Abbas Rizvi`;
+const pageDescription = `${item.summary} Read Minhal Rizvi's role, impact, and skills.`;
+const canonicalUrl = `https://minhal-coding.github.io/my-portfolio/experience.html?id=${encodeURIComponent(item.slug)}`;
+document.querySelector('meta[name="description"]')?.setAttribute("content", pageDescription);
+document.querySelector('meta[property="og:title"]')?.setAttribute("content", document.title);
+document.querySelector('meta[property="og:description"]')?.setAttribute("content", pageDescription);
+document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonicalUrl);
+document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonicalUrl);
+
+const detailNavigation = relatedItems.length > 1
+  ? `<section class="section detail-nav" aria-label="More ${item.category} experiences">
+      <a href="./experience.html?id=${previous.slug}">Previous: ${previous.title}</a>
+      <a href="./experience.html?id=${next.slug}">Next: ${next.title}</a>
+    </section>`
+  : "";
 
 detailRoot.innerHTML = `
-  <section class="detail-hero">
+  <section class="detail-hero${item.image ? "" : " detail-hero-no-media"}">
     <div>
       <a class="back-link" href="./index.html#${backTarget.hash}">${backTarget.label}</a>
       <p class="eyebrow">${item.meta}</p>
@@ -33,7 +50,7 @@ detailRoot.innerHTML = `
     </div>
     ${
       item.image
-        ? `<img class="detail-hero-image" src="${item.image}" alt="${item.title} website image" />`
+        ? `<img class="detail-hero-image" src="${item.image}" alt="${item.title} brand mark or project visual" />`
         : ""
     }
   </section>
@@ -48,7 +65,7 @@ detailRoot.innerHTML = `
         externalLinks.length
           ? `<div class="external-links">
               ${externalLinks
-                .map((link) => `<a href="${link.url}" target="_blank" rel="noopener">${link.label}</a>`)
+                .map((link) => `<a href="${link.url}" target="_blank" rel="noopener">${link.label}<span class="sr-only"> (opens in a new tab)</span></a>`)
                 .join("")}
             </div>`
           : ""
@@ -82,8 +99,5 @@ detailRoot.innerHTML = `
     </div>
   </section>
 
-  <section class="section detail-nav">
-    <a href="./experience.html?id=${previous.slug}">Previous: ${previous.title}</a>
-    <a href="./experience.html?id=${next.slug}">Next: ${next.title}</a>
-  </section>
+  ${detailNavigation}
 `;

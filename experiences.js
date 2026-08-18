@@ -62,31 +62,27 @@ const experiences = [
     title: "YAM Estimation / YAM Tech / YAM Design",
     meta: "Founder / Operations Builder | International Operations | 2024 - 2026",
     location: "Pakistan, Canada, United States, and international client markets",
-    website: "https://yamestimation.com/",
-    image: "https://yammtech.com/logo.png",
-    relatedLinks: [
-      { label: "YAM Tech", url: "https://yammtech.com/" }
-    ],
+    image: "./assets/yam-mark-gold.png",
     tags: ["ai", "operations", "leadership"],
     summary:
-      "Built and supported a multi-division operational ecosystem covering construction estimation, design, digital marketing, AI, technology, and U.S. expansion.",
+      "Founded and operated services spanning construction estimation, design, technology, and U.S. expansion while coordinating client intake, schedules, and distributed delivery.",
     overview:
       "YAM became one of the most important operational learning environments in my journey because it gave me real business exposure, international client communication, workflow leadership, contractor ecosystem experience, and practical operational intelligence.",
     sections: [
       {
         title: "Business growth and expansion",
         body:
-          "In its early phase, YAM Estimation focused on estimation services, contractor support, operational coordination, and workflow execution for painting, flooring, roofing, and renovation-related businesses. Within two years, the company generated $30,000+ in revenue through operational consistency, communication, workflow execution, and scalable delivery systems. Between 2025 and 2026, the company crossed $150,000+ in revenue while expanding internationally."
+          "In its early phase, YAM Estimation focused on estimation services, contractor support, and delivery coordination for painting, flooring, roofing, and renovation-related businesses. YAM reported more than $30,000 in early company revenue and more than $150,000 across 2025-2026. I supported that growth through client communication, scheduling, team coordination, and repeatable delivery workflows."
       },
       {
         title: "International client network",
         body:
-          "The company served clients across the United States, Canada, the United Kingdom, Australia, London, Sydney, and other international markets. This strengthened my understanding of global operations, cross-cultural communication, distributed workflow systems, remote operational management, and scalable service ecosystems."
+          "The company served clients across the United States, Canada, the United Kingdom, Australia, and other international markets. This strengthened my understanding of cross-cultural communication, remote team coordination, and distributed service delivery."
       },
       {
         title: "Operational execution",
         body:
-          "YAM Estimation participated in 30,000+ estimation and design-related projects across multiple industries and operational environments. My responsibilities included workflow management, operational supervision, client communication, scheduling, delivery coordination, task delegation, and execution monitoring across contractors, estimators, operational teams, and distributed workflow systems."
+          "The YAM team processed more than 30,000 estimation and design-related records across contractor and renovation workflows. My responsibilities included client communication, scheduling, estimator assignments, delivery coordination, task delegation, and progress monitoring across distributed teams."
       },
       {
         title: "YAM Design and digital marketing",
@@ -105,9 +101,9 @@ const experiences = [
       }
     ],
     impact: [
-      "Supported revenue growth from $30,000+ in the early phase to $150,000+ across 2025-2026.",
-      "Participated in 30,000+ estimation and design-related projects across contractor and renovation workflows.",
-      "Served clients across the United States, Canada, the United Kingdom, Australia, London, Sydney, and other international markets.",
+      "Supported YAM as the company reported growth from $30,000+ in its early phase to $150,000+ across 2025-2026.",
+      "Coordinated workflows within a team that processed 30,000+ estimation and design-related records.",
+      "Supported clients across the United States, Canada, the United Kingdom, Australia, and other international markets.",
       "Helped coordinate Texas office setup, U.S. operational planning, contractor growth, and multi-state registration support."
     ],
     skills: [
