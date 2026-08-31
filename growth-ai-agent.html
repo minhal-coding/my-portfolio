@@ -182,6 +182,59 @@
         </div>
       </section>
 
+      <section class="section ai-activity growth-live-pulse" id="live-pulse" data-ai-activity>
+        <div class="ai-activity-heading">
+          <div>
+            <p class="eyebrow">Live build pulse</p>
+            <h2>A daily record of progress and AI-assisted effort.</h2>
+          </div>
+          <div class="ai-activity-sync" aria-live="polite">
+            <span class="ai-activity-dot" aria-hidden="true"></span>
+            <div>
+              <strong data-activity-status>Active development</strong>
+              <time data-activity-generated datetime="2026-08-31T12:00:00-04:00">Snapshot refreshed Aug 31, 2026</time>
+            </div>
+          </div>
+        </div>
+        <p class="ai-activity-lede">
+          Public repository activity can refresh this snapshot every day. The token figure is an
+          owner-maintained estimate of Codex-assisted work and is intentionally separated from
+          verified product outcomes, customer results, or provider billing.
+        </p>
+        <div class="ai-activity-layout">
+          <dl class="ai-activity-metrics" aria-label="Growth AI Agent build metrics">
+            <div class="ai-activity-metric ai-activity-metric-primary">
+              <dt data-activity-metric="tokens" data-counter-value="16000000000" data-counter-format="compact" data-counter-prefix="≈" data-counter-label="Approximately 16 billion AI tokens">≈16B</dt>
+              <dd>
+                AI tokens directed through Codex-assisted work
+                <small data-activity-token-note>Self-reported working estimate · updated Aug 31, 2026</small>
+              </dd>
+            </div>
+            <div class="ai-activity-metric">
+              <dt data-activity-metric="build-days" data-counter-value="87" data-counter-suffix=" days">87 days</dt>
+              <dd>Building from the first dated engineering scaffold</dd>
+            </div>
+            <div class="ai-activity-metric">
+              <dt data-activity-metric="review-states" data-counter-value="4">4</dt>
+              <dd>Human review states in the construction workflow</dd>
+            </div>
+          </dl>
+          <article class="ai-activity-feed">
+            <p class="ai-activity-label">Latest recorded update</p>
+            <time data-activity-latest-date datetime="2026-08-31T12:00:00-04:00">Aug 31, 2026</time>
+            <h3>
+              <a data-activity-latest-title href="#live-pulse">Added a portfolio activity pulse and daily sync foundation</a>
+            </h3>
+            <ol data-activity-updates aria-label="Recent Growth AI Agent updates">
+              <li><time datetime="2026-08-31">Aug 31, 2026</time><a href="#live-pulse">Added a portfolio activity pulse and daily sync foundation</a></li>
+              <li><time datetime="2026-08-13">Aug 13, 2026</time><a href="#evidence">Strengthened construction validation, review states, and release evidence</a></li>
+              <li><time datetime="2026-07-31">Jul 31, 2026</time><a href="#build-story">Made the Business Profile authoritative and approval-controlled</a></li>
+            </ol>
+            <a class="section-link ai-activity-link" href="#evidence">Review the development evidence</a>
+          </article>
+        </div>
+      </section>
+
       <section class="section growth-architecture" id="architecture">
         <div class="section-heading">
           <p class="eyebrow">Verified technical architecture</p>
@@ -523,27 +576,27 @@
         </div>
         <dl class="growth-proof-grid">
           <div>
-            <dt>2,108</dt>
+            <dt data-counter-value="2108">2,108</dt>
             <dd>Backend tests passed with 14 expected skips in a dated August 13 internal milestone</dd>
           </div>
           <div>
-            <dt>18/18</dt>
+            <dt><span data-counter-value="18" data-counter-label="18 out of 18 scenarios">18</span><span aria-hidden="true">/18</span></dt>
             <dd>Deterministic Business Profile scenarios passed in an isolated cloud-staging evaluation</dd>
           </div>
           <div>
-            <dt>120</dt>
+            <dt data-counter-value="120">120</dt>
             <dd>Focused backend checks recorded for the shared owner and client dashboard milestone</dd>
           </div>
           <div>
-            <dt>4</dt>
+            <dt data-counter-value="4">4</dt>
             <dd>Rendered owner/client flows validated with zero console errors in that dated milestone</dd>
           </div>
           <div>
-            <dt>10</dt>
+            <dt data-counter-value="10">10</dt>
             <dd>Public concept routes validated at successful HTTP responses in the linked review</dd>
           </div>
           <div>
-            <dt>0</dt>
+            <dt data-counter-value="0">0</dt>
             <dd>Known npm audit vulnerabilities reported at the time of the public concept review</dd>
           </div>
         </dl>
@@ -679,5 +732,6 @@
       <p>Syed Muhammad Minhal Abbas Rizvi</p>
       <p>AI Systems | Product Operations | SaaS Implementation</p>
     </footer>
+    <script src="./activity.js"></script>
   </body>
 </html>

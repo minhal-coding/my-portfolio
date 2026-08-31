@@ -91,20 +91,20 @@
         </div>
         <dl class="quick-stats" aria-label="Portfolio highlights">
           <div>
-            <dt>4.0</dt>
+            <dt data-counter-value="4" data-counter-format="decimal" data-counter-decimals="1" data-counter-label="4.0 GPA">4.0</dt>
             <dd>GPA</dd>
           </div>
           <div>
-            <dt>$150K+</dt>
+            <dt data-counter-value="150000" data-counter-format="compact" data-counter-prefix="$" data-counter-suffix="+" data-counter-label="More than 150 thousand dollars">$150K+</dt>
             <dd>YAM company revenue reported</dd>
           </div>
           <div>
-            <dt>30K+</dt>
+            <dt data-counter-value="30000" data-counter-format="compact" data-counter-suffix="+" data-counter-label="More than 30 thousand records">30K+</dt>
             <dd>Team estimate/design records</dd>
           </div>
           <div>
-            <dt>28/31</dt>
-            <dd>UN resolution votes</dd>
+            <dt data-counter-value="16000000000" data-counter-format="compact" data-counter-prefix="≈" data-counter-label="Approximately 16 billion AI tokens used">≈16B</dt>
+            <dd>AI tokens used in Codex-assisted work</dd>
           </div>
         </dl>
       </section>
@@ -142,6 +142,59 @@
             <a class="primary shiny-button" href="./growth-ai-agent.html">Explore the project</a>
             <a class="secondary shiny-button" href="./growth-ai-agent.html#build-story">See how I built it</a>
           </div>
+        </div>
+      </section>
+
+      <section class="section ai-activity" id="build-pulse" data-ai-activity>
+        <div class="ai-activity-heading">
+          <div>
+            <p class="eyebrow">Live build pulse</p>
+            <h2>The portfolio moves as the Growth AI Agent moves.</h2>
+          </div>
+          <div class="ai-activity-sync" aria-live="polite">
+            <span class="ai-activity-dot" aria-hidden="true"></span>
+            <div>
+              <strong data-activity-status>Active development</strong>
+              <time data-activity-generated datetime="2026-08-31T12:00:00-04:00">Snapshot refreshed Aug 31, 2026</time>
+            </div>
+          </div>
+        </div>
+        <p class="ai-activity-lede">
+          A daily snapshot connects this portfolio to public Growth AI Agent progress. It also
+          records the scale of the Codex-assisted work behind the product, with estimates labeled
+          clearly rather than presented as provider-verified billing data.
+        </p>
+        <div class="ai-activity-layout">
+          <dl class="ai-activity-metrics" aria-label="AI build metrics">
+            <div class="ai-activity-metric ai-activity-metric-primary">
+              <dt data-activity-metric="tokens" data-counter-value="16000000000" data-counter-format="compact" data-counter-prefix="≈" data-counter-label="Approximately 16 billion AI tokens">≈16B</dt>
+              <dd>
+                AI tokens directed through Codex-assisted work
+                <small data-activity-token-note>Self-reported working estimate · updated Aug 31, 2026</small>
+              </dd>
+            </div>
+            <div class="ai-activity-metric">
+              <dt data-activity-metric="build-days" data-counter-value="87" data-counter-suffix=" days">87 days</dt>
+              <dd>Building from the first dated engineering scaffold</dd>
+            </div>
+            <div class="ai-activity-metric">
+              <dt data-activity-metric="review-states" data-counter-value="4">4</dt>
+              <dd>Human review states in the construction workflow</dd>
+            </div>
+          </dl>
+          <article class="ai-activity-feed">
+            <p class="ai-activity-label">Latest recorded update</p>
+            <time data-activity-latest-date datetime="2026-08-31T12:00:00-04:00">Aug 31, 2026</time>
+            <h3>
+              <a data-activity-latest-title href="./growth-ai-agent.html#live-pulse">Added a portfolio activity pulse and daily sync foundation</a>
+            </h3>
+            <ol data-activity-updates aria-label="Recent Growth AI Agent updates">
+              <li><time datetime="2026-08-31">Aug 31, 2026</time><a href="./growth-ai-agent.html#live-pulse">Added a portfolio activity pulse and daily sync foundation</a></li>
+              <li><time datetime="2026-08-13">Aug 13, 2026</time><a href="./growth-ai-agent.html#evidence">Strengthened construction validation, review states, and release evidence</a></li>
+              <li><time datetime="2026-07-31">Jul 31, 2026</time><a href="./growth-ai-agent.html#build-story">Made the Business Profile authoritative and approval-controlled</a></li>
+            </ol>
+            <a class="section-link ai-activity-link" href="./growth-ai-agent.html#live-pulse">Open the full build pulse</a>
+          </article>
         </div>
       </section>
 
@@ -479,5 +532,6 @@
 
     <script src="./experiences.js"></script>
     <script src="./app.js"></script>
+    <script src="./activity.js"></script>
   </body>
 </html>
