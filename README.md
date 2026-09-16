@@ -36,9 +36,9 @@ Optional GitHub repository variables:
 - `GROWTH_AI_REPOSITORY` — public repository in `owner/repository` format. The default is
   `minhal-coding/growthagent-ai-website-v2`. Point this only at a repository whose commit
   activity is appropriate to publish.
-- `CODEX_TOKEN_TOTAL` — owner-maintained cumulative token estimate as a plain integer. Codex does
-  not currently expose a public lifetime-token feed to this static site, so this value is labeled
-  as an estimate in the interface.
+- `CODEX_TOKEN_TOTAL` — legacy variable name for the owner-maintained cumulative token estimate
+  across all AI platforms, as a plain integer. The site has no cross-platform usage integration;
+  this figure is self-reported and is not specific to Growth AI Agent or Codex.
 
 The workflow can also be run manually from the repository's Actions tab after either variable is
 updated.

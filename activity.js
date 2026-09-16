@@ -114,7 +114,7 @@ function updateActivitySurface(surface, data) {
     const lowerBound = data.tokens?.lowerBound === true;
     element.dataset.counterPrefix = !lowerBound && data.tokens?.approximate ? "≈" : "";
     element.dataset.counterSuffix = lowerBound ? "+" : "";
-    element.dataset.counterLabel = `${lowerBound ? "More than " : data.tokens?.approximate ? "Approximately " : ""}${tokenTotal.toLocaleString("en-US")} AI tokens, self-reported estimate`;
+    element.dataset.counterLabel = `${lowerBound ? "More than " : data.tokens?.approximate ? "Approximately " : ""}${tokenTotal.toLocaleString("en-US")} AI tokens used across all AI platforms, self-reported estimate`;
     element.dataset.counterAnimated = "false";
   });
   surface.querySelectorAll('[data-activity-metric="build-days"]').forEach((element) => {

@@ -67,7 +67,7 @@ const configuredTokenTotal = Number(process.env.CODEX_TOKEN_TOTAL);
 if (Number.isFinite(configuredTokenTotal) && configuredTokenTotal > 0 && configuredTokenTotal !== data.tokens.total) {
   data.tokens.total = configuredTokenTotal;
   data.tokens.updatedAt = new Date().toISOString();
-  data.tokens.sourceLabel = "Owner-maintained Codex usage estimate";
+  data.tokens.sourceLabel = "Self-reported cross-platform AI usage estimate";
 }
 
 if (JSON.stringify(data) !== originalSnapshot) {
