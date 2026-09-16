@@ -176,8 +176,8 @@ async function loadActivityData() {
   if (!surfaces.length) return;
 
   try {
-    const dailyCacheKey = new Date().toISOString().slice(0, 10);
-    const response = await fetch(`./data/ai-activity.json?v=${dailyCacheKey}`, {
+    const response = await fetch("./data/ai-activity.json", {
+      cache: "no-store",
       headers: { Accept: "application/json" }
     });
     if (!response.ok) throw new Error(`Activity data returned ${response.status}`);
