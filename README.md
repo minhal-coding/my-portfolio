@@ -14,7 +14,22 @@ Key pages:
 
 The home page and Growth AI Agent page read `data/ai-activity.json`. The
 `.github/workflows/sync-ai-activity.yml` workflow refreshes recent public repository activity
-once per day and commits the updated snapshot.
+once per day and commits only substantive source or owner-input changes. Checks with
+no new activity leave the file untouched, avoiding timestamp-only commits. This feed
+tracks the public marketing repository, not the private product implementation.
+
+## Public engineering evidence
+
+[Data Quality Monitor](https://github.com/minhal-coding/data-quality-monitor) provides
+inspectable Python code, a FastAPI endpoint, CLI, tests, and a local report UI.
+Its [public demo](https://minhal-coding.github.io/data-quality-monitor/) is explicitly
+a recorded synthetic report; custom-file processing runs locally.
+
+## Local validation
+
+Run `python -m http.server 8000` and open `http://localhost:8000` for the static site.
+Run `node --test scripts/sync-ai-activity.test.mjs` for the snapshot regression tests.
+The tests mock GitHub responses and never call a provider or publish data.
 
 Optional GitHub repository variables:
 

@@ -5,7 +5,11 @@ import path from "node:path";
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const dataPath = path.resolve(scriptDirectory, "../data/ai-activity.json");
 const data = JSON.parse(await readFile(dataPath, "utf8"));
+const originalSnapshot = JSON.stringify(data);
 const repository = process.env.GROWTH_AI_REPOSITORY || data.growthAI.repository;
+if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository)) {
+  throw new Error("Activity source must use owner/repository format.");
+}
 const githubToken = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 
 const headers = {
@@ -16,7 +20,7 @@ const headers = {
 };
 
 async function getJson(url) {
-  const response = await fetch(url, { headers });
+  const response = await fetch(url, { headers, signal: AbortSignal.timeout(15000) });
   if (!response.ok) {
     throw new Error(`${url} returned ${response.status}: ${await response.text()}`);
   }
@@ -28,6 +32,10 @@ const [repositoryData, commits] = await Promise.all([
   getJson(`https://api.github.com/repos/${repository}/commits?per_page=3`)
 ]);
 
+if (repositoryData.private !== false) {
+  throw new Error("Activity snapshots may only publish verified public repositories.");
+}
+
 const recentUpdates = commits.map((commit) => ({
   title: commit.commit.message.split("\n")[0],
   timestamp: commit.commit.committer.date,
@@ -35,7 +43,6 @@ const recentUpdates = commits.map((commit) => ({
   shortSha: commit.sha.slice(0, 7)
 }));
 
-data.generatedAt = new Date().toISOString();
 data.growthAI.repository = repository;
 data.growthAI.repositoryUrl = repositoryData.html_url;
 
@@ -57,13 +64,18 @@ if (recentUpdates.length && incomingLatestTime > recordedLatestTime) {
 }
 
 const configuredTokenTotal = Number(process.env.CODEX_TOKEN_TOTAL);
-if (Number.isFinite(configuredTokenTotal) && configuredTokenTotal > 0) {
+if (Number.isFinite(configuredTokenTotal) && configuredTokenTotal > 0 && configuredTokenTotal !== data.tokens.total) {
   data.tokens.total = configuredTokenTotal;
-  data.tokens.updatedAt = data.generatedAt;
+  data.tokens.updatedAt = new Date().toISOString();
   data.tokens.sourceLabel = "Owner-maintained Codex usage estimate";
 }
 
-await writeFile(dataPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+if (JSON.stringify(data) !== originalSnapshot) {
+  data.generatedAt = new Date().toISOString();
+  await writeFile(dataPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+} else {
+  console.log("No substantive activity or owner-input changes; snapshot left untouched.");
+}
 console.log(`Checked ${recentUpdates.length} updates from ${repository}.`);
 console.log(
   incomingLatestTime > recordedLatestTime
