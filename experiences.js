@@ -372,6 +372,11 @@ const experiences = [
           "Beyond coursework, I participated in Phi Theta Kappa initiatives, student leadership activities, public speaking opportunities, institutional networking, and student ambassador responsibilities. These experiences strengthened my communication, campaign leadership, networking, institutional collaboration, and service leadership skills."
       },
       {
+        title: "Transfer Scholars Network nomination",
+        body:
+          "Nominated by Northern Virginia Community College for the Transfer Scholars Network (TSN) based on academic achievement. The network supports community college transfer planning and connections with participating four-year institutions."
+      },
+      {
         title: "Representing NOVA",
         body:
           "As a Student Ambassador, I assist prospective students, new students, international students, transfer students, and current students throughout different stages of their academic journey. I help students feel welcomed, supported, informed, and confident while navigating college systems and resources."
@@ -404,6 +409,7 @@ const experiences = [
     ],
     impact: [
       "Maintained a 4.0 GPA and earned Presidential Scholar honors for Fall 2025 and Spring 2026, plus Dean's List recognition for Spring 2025.",
+      "Nominated by NOVA for the Transfer Scholars Network based on academic achievement.",
       "Represented NOVA's Woodbridge Campus at a board meeting.",
       "Received written appreciation from NOVA President Dr. Anne M. Kress and Woodbridge Campus Provost Dr. Richmond Hill.",
       "Helps prospective, new, international, transfer, and current students navigate college systems and resources.",
