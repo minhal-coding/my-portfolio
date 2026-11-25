@@ -1,4 +1,4 @@
-const networkingMessage = `Hi, I hope you are doing well. My name is Syed Muhammad Minhal Abbas Rizvi. I am a Computer Science student and AI systems builder based in Newark, Delaware, with experience in SaaS implementation, workflow automation, product operations, and technical project coordination across industries. I am currently applying that broader background to Growth AI Agent, an evidence-first construction opportunity intelligence project. You can view my work at https://minhal-coding.github.io/my-portfolio/. I would appreciate your feedback or an introduction to a relevant internship or early-career opportunity.`;
+const networkingMessage = `Hi, I hope you are doing well. My name is Syed Muhammad Minhal Abbas Rizvi. I am a Computer Science student and AI systems builder based in Newark, Delaware, with experience in SaaS implementation, workflow automation, product operations, and technical project coordination across industries. I am currently applying that broader background to Growth AI Agent, an evidence-first construction opportunity intelligence project. You can view my work at https://minhal-coding.github.io/my-portfolio/. I am seeking full-time positions only and am willing to relocate with employer assistance. I would appreciate your feedback or an introduction to a relevant full-time opportunity.`;
 
 const caseGrid = document.querySelector("#caseGrid");
 const filters = document.querySelectorAll(".filter");
@@ -106,3 +106,27 @@ function initGlowCards() {
 
 renderCases();
 initGlowCards();
+
+const menuToggle = document.querySelector(".nav-toggle");
+const primaryNav = document.querySelector("#primary-nav");
+
+if (menuToggle && primaryNav) {
+  document.body.classList.add("has-js");
+  const setMenuOpen = (open) => {
+    menuToggle.setAttribute("aria-expanded", String(open));
+    primaryNav.dataset.open = String(open);
+  };
+  menuToggle.addEventListener("click", () => {
+    setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+  });
+  primaryNav.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setMenuOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+      setMenuOpen(false);
+      menuToggle.focus();
+    }
+  });
+  window.matchMedia("(min-width: 761px)").addEventListener("change", () => setMenuOpen(false));
+}

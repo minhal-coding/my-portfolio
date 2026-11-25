@@ -348,7 +348,7 @@ const experiences = [
     slug: "nova",
     category: "academic",
     title: "Northern Virginia Community College",
-    meta: "Computer Science Student | 4.0 GPA | Student Ambassador | Jun 2025 - Present",
+    meta: "Computer Science Student | 4.0 GPA | Student Ambassador | Expected Graduation Dec 2026",
     location: "Woodbridge, Virginia, USA",
     tags: ["education", "leadership", "operations"],
     summary:
@@ -359,7 +359,7 @@ const experiences = [
       {
         title: "Education",
         body:
-          "I am currently pursuing Computer Science at Northern Virginia Community College in Woodbridge, Virginia. My academic journey is focused on technical foundations, analytical thinking, structured problem-solving, communication, project coordination, and preparation for AI, cloud, SaaS, product, and project management work."
+          "I am completing an Associate of Science in Computer Science at Northern Virginia Community College in Woodbridge, Virginia, with expected graduation in December 2026. My academic journey is focused on technical foundations, analytical thinking, structured problem-solving, communication, project coordination, and preparation for AI, cloud, SaaS, product, and project management work."
       },
       {
         title: "Academic excellence",
@@ -375,6 +375,16 @@ const experiences = [
         title: "Representing NOVA",
         body:
           "As a Student Ambassador, I assist prospective students, new students, international students, transfer students, and current students throughout different stages of their academic journey. I help students feel welcomed, supported, informed, and confident while navigating college systems and resources."
+      },
+      {
+        title: "Woodbridge Campus board meeting representation",
+        body:
+          "Represented NOVA's Woodbridge Campus at a board meeting, building on my campus involvement and student ambassador experience."
+      },
+      {
+        title: "Appreciation from NOVA leadership",
+        body:
+          "Received written appreciation from Dr. Anne M. Kress, President of Northern Virginia Community College, and Dr. Richmond Hill, Woodbridge Campus Provost."
       },
       {
         title: "Leadership responsibilities",
@@ -393,6 +403,9 @@ const experiences = [
       }
     ],
     impact: [
+      "Maintained a 4.0 GPA and earned Presidential Scholar honors for Fall 2025 and Spring 2026, plus Dean's List recognition for Spring 2025.",
+      "Represented NOVA's Woodbridge Campus at a board meeting.",
+      "Received written appreciation from NOVA President Dr. Anne M. Kress and Woodbridge Campus Provost Dr. Richmond Hill.",
       "Helps prospective, new, international, transfer, and current students navigate college systems and resources.",
       "Supports Canvas, SIS, myNOVA, academic scheduling systems, student resource platforms, and communication systems.",
       "Built confidence in public speaking, mentoring, service leadership, emotional intelligence, and operational coordination."
@@ -432,6 +445,11 @@ const experiences = [
           "The conference strengthened my leadership, negotiation, diplomacy, public speaking, coalition-building, communication, emotional intelligence, and multicultural collaboration through high-pressure international discussions and policy negotiations."
       },
       {
+        title: "Awards and recognition",
+        body:
+          "Received the Extraordinary Leadership Award and Best Negotiation Award at the Best Diplomats United Nations Simulation in New York City while representing Malaysia."
+      },
+      {
         title: "WAVE alliance",
         body:
           "One of the most important moments was helping establish WAVE, the Women Alliance, Vision Empowered, an international diplomatic bloc formed during negotiations. I contributed to coalition-building, strategic discussions, negotiation coordination, collaborative execution, and resolution planning."
@@ -445,7 +463,8 @@ const experiences = [
     impact: [
       "Helped establish WAVE, the Women Alliance, Vision Empowered, during international negotiations.",
       "Contributed to coalition-building, strategic discussions, resolution planning, and multicultural collaboration.",
-      "Supported a resolution that passed with 28 out of 31 votes and received leadership and negotiation recognition."
+      "Supported a resolution that passed with 28 out of 31 votes.",
+      "Received the Extraordinary Leadership Award and Best Negotiation Award in New York City."
     ],
     skills: [
       "Diplomacy",

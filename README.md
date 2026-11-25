@@ -6,13 +6,20 @@ Live site: `https://minhal-coding.github.io/my-portfolio/`
 
 Key pages:
 
-- `index.html` — portfolio overview
+- `index.html` — introduction, selected projects, experience, skills, research, education and recognition, and contact
 - `growth-ai-agent.html` — current construction-opportunity product concept
 - `experience.html?id=...` — data-driven experience details
 
+The homepage uses `homepage.css` alongside the shared styles. It highlights full-time
+availability, relocation with employer assistance, and confirmed versus pending work
+authorization. Research is labeled as a working draft, with proposed methods identified
+separately. The CV download provides a one-page summary in
+`assets/Syed-Minhal-Abbas-Rizvi-CV.pdf`.
+
 ## Daily AI activity snapshot
 
-The home page and Growth AI Agent page read `data/ai-activity.json`. The
+The Growth AI Agent page reads `data/ai-activity.json`. The homepage links to the
+development log in that case study. The
 `.github/workflows/sync-ai-activity.yml` workflow refreshes recent public repository activity
 once per day and commits only substantive source or owner-input changes. Checks with
 no new activity leave the file untouched, avoiding timestamp-only commits. This feed
